@@ -88,9 +88,14 @@ function setOperation(operator) {
 }
 
 function evaluate() {
+    if (currentOperation === '/' && currentDisplay.textContent === '0') { 
+        alert('No dividing by zero!')
+        return
+    } else {
     secondOperand = currentDisplay.textContent
     currentDisplay.textContent = operate(currentOperation, firstOperand, secondOperand)
     currentOperation = null
+    }
 }
 
 
