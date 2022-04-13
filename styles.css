@@ -104,6 +104,14 @@ button {
     border-color: #222;
     box-shadow: 2px 2px 2px 1px rgba(50, 50, 50, .125);
     font-size: 1.25rem;
+    background-color: #e2e8f0;
+}
+
+button:active {
+    background-color: #cbd5e1;
+    border: solid;
+    border-color: #222;
+    box-shadow: none;
 }
 
 .screen {
@@ -129,12 +137,22 @@ button {
 
 .clear-btn {
     grid-column: span 2;
-    background-color: rgb(253, 123, 123);
+    background-color: #fecaca;
+}
+
+.clear-btn:active {
+    grid-column: span 2;
+    background-color: #fca5a5;
 }
 
 .delete-btn {
     grid-column: span 2;
-    background-color: #93b8f0;
+    background-color: #bae6fd;
+}
+
+.delete-btn:active {
+    grid-column: span 2;
+    background-color: #7dd3fc;
 }
 
 .screen {
@@ -146,4 +164,12 @@ button {
     border: solid;
     border-radius: 8px;
     border-color: #222;
+}
+
+button[data-operator] {
+    background-color: #99f6e4;
+}
+
+button[data-operator]:active {
+    background-color: #5eead4;
 }
