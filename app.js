@@ -1,7 +1,23 @@
-function add(a, b) {return a + b}
-function subtract(a, b) {return a - b}
-function multiply(a, b) {return a * b}
-function divide(a, b) {return a / b}
+let firstOperand = ''
+let secondOperand = ''
+let currentOperation = null
+let shouldReset = false
+
+function add(a, b) {
+    return a + b
+}
+
+function subtract(a, b) {
+    return a - b
+}
+
+function multiply(a, b) {
+    return a * b
+}
+
+function divide(a, b) {
+    return a / b
+}
 
 function operate(operator, a, b) {
     a = Number(a)
@@ -16,8 +32,9 @@ function operate(operator, a, b) {
         case '*':
             return multiply(a, b)
             break;
-        case '÷':
-            return divide(a, b)
+        case '/':
+            if (b === 0) return null
+            else return divide(a, b)
             break;
         default:
             return null
@@ -27,21 +44,56 @@ function operate(operator, a, b) {
 
 
 //SCREEN DISPLAY
-const display = document.getElementById('screen-content')
-display.textContent = '0'
+const currentDisplay = document.getElementById('screen-content')
 
-// CALCULATOR BUTTONS
-
+//CALCULATOR BUTTONS
 const numberButtons = document.querySelectorAll('[data-number]')
 const operatorButtons = document.querySelectorAll('[data-operator]')
+const clearButton = document.querySelector('.clear-btn')
+const equalsButton = document.getElementById('equals')
 
 numberButtons.forEach((button) => 
-    button.addEventListener('click', () => updateDisplay(button.textContent))
+    button.addEventListener('click', () => updateDisplay(button.dataset.number))
 )
 
+operatorButtons.forEach((button) => 
+    button.addEventListener('click', () => setOperation(button.dataset.operator))
+)
+
+clearButton.onclick = () => clearScreen()
+
+equalsButton.onclick = () => evaluate()
+
 function updateDisplay(number) {
-    if (display.textContent === 0) {
-    display.textContent = ''
+    if (currentDisplay.textContent === '0' || shouldReset ) {
+        currentDisplay.textContent = ''
+        shouldReset = false
+    }  
+    currentDisplay.textContent += number
 }
-    display.textContent += number    
+
+function clearScreen() {
+  currentDisplay.textContent = '0'
+  currentOperation === null
+  firstOperand = ''
+  secondOperand = ''
+  shouldReset = false
 }
+
+function setOperation(operator) {
+    if (currentOperation !== null) evaluate() 
+    firstOperand = currentDisplay.textContent
+    currentOperation = operator
+    shouldReset = true
+}
+
+function evaluate() {
+    secondOperand = currentDisplay.textContent
+    currentDisplay.textContent = operate(currentOperation, firstOperand, secondOperand)
+    currentOperation = null
+}
+
+
+
+
+

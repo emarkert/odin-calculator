@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+
+/* ///////////// START CSS RESET \\\\\\\\\\\\\\\\\\\  */
+
 /* 1. Use a more-intuitive box-sizing model. */ 
 *,
 *::before,
@@ -79,10 +83,11 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10%;
 }
 
 .calculator {
-    width: calc(400px - 32px);
+    width: 400px;
     height: 100%;
     background-color: #aaa;
     padding: 1rem;
@@ -98,7 +103,7 @@ button {
     border: solid;
     border-color: #222;
     box-shadow: 2px 2px 2px 1px rgba(50, 50, 50, .125);
-    font-size: 1rem;
+    font-size: 1.25rem;
 }
 
 .screen {
