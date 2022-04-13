@@ -51,6 +51,7 @@ const numberButtons = document.querySelectorAll('[data-number]')
 const operatorButtons = document.querySelectorAll('[data-operator]')
 const clearButton = document.querySelector('.clear-btn')
 const equalsButton = document.getElementById('equals')
+const deleteButton = document.getElementById('delete')
 
 numberButtons.forEach((button) => 
     button.addEventListener('click', () => updateDisplay(button.dataset.number))
@@ -63,6 +64,8 @@ operatorButtons.forEach((button) =>
 clearButton.onclick = () => clearScreen()
 
 equalsButton.onclick = () => evaluate()
+
+deleteButton.onclick = () => deleteNumber()
 
 function updateDisplay(number) {
     if (currentDisplay.textContent === '0' || shouldReset ) {
@@ -97,6 +100,15 @@ function evaluate() {
     currentOperation = null
     }
 }
+
+function deleteNumber() {
+    let value = currentDisplay.textContent.split('')
+    value.pop()
+    currentDisplay.textContent = value.join('')
+}
+
+
+
 
 
 
