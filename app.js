@@ -25,3 +25,23 @@ function operate(operator, a, b) {
     }
 }
 
+
+//SCREEN DISPLAY
+const display = document.getElementById('screen-content')
+display.textContent = '0'
+
+// CALCULATOR BUTTONS
+
+const numberButtons = document.querySelectorAll('[data-number]')
+const operatorButtons = document.querySelectorAll('[data-operator]')
+
+numberButtons.forEach((button) => 
+    button.addEventListener('click', () => updateDisplay(button.textContent))
+)
+
+function updateDisplay(number) {
+    if (display.textContent === 0) {
+    display.textContent = ''
+}
+    display.textContent += number    
+}
